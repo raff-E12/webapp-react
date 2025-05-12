@@ -1,31 +1,30 @@
 import React from 'react'
 import placeholder from "../../../public/imgs/img_placeholder.png"
+import Movies from "../../assets/api/Movies_list.json"
+import { useNavigate } from 'react-router'
 
 export default function Products() {
+  const navigate_link = useNavigate();
+
   return (
-    
   <section class="products" id="prodotti">
     <div class="container">
       <h2>Film in Evidenza</h2>
       <div class="product-grid">
-        <div class="product">
-          <img src={placeholder} alt="Libro 1" />
-          <h3>Titolo Libro 1</h3>
-          <p>Autore: Mario Rossi</p>
-          <button class="btn">Acquista Ora</button>
-        </div>
-        <div class="product">
-          <img src={placeholder} alt="Libro 2" />
-          <h3>Titolo Libro 2</h3>
-          <p>Autore: Laura Bianchi</p>
-          <button class="btn">Acquista Ora</button>
-        </div>
-        <div class="product">
-          <img src={placeholder} alt="Libro 3" />
-          <h3>Titolo Libro 3</h3>
-          <p>Autore: Giovanni Verdi</p>
-          <button class="btn">Acquista Ora</button>
-        </div>
+        {Movies.map((element, index) =>{
+         if (element.id > 2) {
+            return(
+            <>
+            <div class="product" key={index}>
+              <img src={element.image} alt="movies-icons" />
+              <h3>{element.title}</h3>
+              <p>Regista: {element.director}</p>
+              <button class="btn" onClick={() => navigate_link(`/movies/${element.title}`)}>Leggi Ora</button>
+           </div>
+            </>
+          )
+         }
+        })}
       </div>
     </div>
   </section>
