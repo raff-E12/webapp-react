@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 import './App.css'
 import Homepage from './assets/pages/Homepage'
+import ListMovies from './assets/pages/ListMovies'
+import Contactpage from './assets/pages/Contactpage'
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
     <BrowserRouter>
       <Routes>
          <Route index element={<Homepage />} />
+         <Route path="/movies" element={<ListMovies />}/>
+         <Route path='/contact' element={<Contactpage />} />
       </Routes>
     </BrowserRouter>
     </>
