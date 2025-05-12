@@ -3,6 +3,8 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useParams } from 'react-router'
 import Placeholder from "../../../public/imgs/img_placeholder.png"
+import Movies from "../../assets/api/Movies_list.json"
+import Reviews from "../../assets/api/Reviews_list.json"
 
 export default function MoviesIDSection() {
   const { name } = useParams(); 
@@ -11,45 +13,45 @@ export default function MoviesIDSection() {
   return (
    <>
    <Header />
-
-        <section class="book-detail">
+    <section class="book-detail">
         <div class="container">
-        <div class="book-header">
-            <h1>Il Nome della Rosa</h1>
-            <p>di Umberto Eco</p>
-        </div>
-        <div class="book-image">
-        <img src={Placeholder} alt="Il Nome della Rosa" />
-        </div>
-        <div class="book-description">
-            <p>
-            Ambientato in un'abbazia medievale del XIV secolo, "Il Nome della Rosa" è un romanzo storico e giallo che unisce mistero, filosofia e religione in una trama avvincente. Segui il monaco Guglielmo da Baskerville e il novizio Adso da Melk in un'indagine su una serie di misteriosi omicidi.
-            </p>
-        </div>
-
+        {Movies.map((element, index) =>{
+         if (element.title === name) {
+             return(
+            <>
+            <div class="book-header">
+                <h1>{element.title}</h1>
+                <p>{element.director}</p>
+             </div>
+            <div class="book-image">
+            <img src={element.image} alt="Il Nome della Rosa" />
+            </div>
+            <div class="book-description">
+            <p>{element.abstract}</p>
+            </div>
+            </>
+          )
+         }
+        })}
+        
         <div class="reviews">
-            <h2>Recensioni degli Utenti</h2>
-            <div class="review">
-            <h3>Mario Rossi</h3>
-            <p>
-                Un capolavoro assoluto. La combinazione di mistero e filosofia rende questo libro unico nel suo genere.
-            </p>
-            <p class="rating">⭐⭐⭐⭐⭐</p>
-            </div>
-            <div class="review">
-            <h3>Laura Bianchi</h3>
-            <p>
-                Un romanzo incredibile. Ho adorato l'intreccio della trama e l'ambientazione medievale.
-            </p>
-            <p class="rating">⭐⭐⭐⭐</p>
-            </div>
-            <div class="review">
-            <h3>Giovanni Verdi</h3>
-            <p>
-                Molto interessante, ma in alcuni punti un po' complesso. Consigliato a chi ama i romanzi storici.
-            </p>
-            <p class="rating">⭐⭐⭐⭐</p>
-            </div>
+        <h2>Recensioni degli Utenti</h2>
+        <div class="reviews">
+         {Reviews.map((element, index) => {
+            const movies_id_find = Movies.find(movies => { return movies.id === element.movie_id });
+            if (movies_id_find) {
+               return(
+                <>
+                <div class="review" key={index}>
+                <h3>{element.name}</h3>
+                <p>{element.text}</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                </div>
+                </>
+             )
+            }
+         })}
+        </div>
         </div>
         </div>
     </section>
