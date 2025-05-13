@@ -9,7 +9,9 @@ import { Export_Context } from '../api/ApiConnection'
 
 export default function MoviesIDSection() {
   const { name } = useParams(); 
-  const { isMovies, setMovies } = Export_Context();
+  const { isMovies, setMovies, SetID, isID, isReviews, isUpdate } = Export_Context();
+
+  console.log(isID);
 
   return (
    <>
@@ -20,6 +22,7 @@ export default function MoviesIDSection() {
           <div class="box-loading"></div>
           </div> : isMovies.map((element) =>{
          if (element.title === name) {
+             SetID(Number(element.id));
              return(
             <>
             <div class="book-header">
@@ -40,9 +43,9 @@ export default function MoviesIDSection() {
         <div class="reviews">
             <h2>Recensioni degli Utenti</h2>
             <div class="reviews">
-               {Reviews.map((element, index) => {
-                  const movies_id_find = Movies.find(movies => { return movies.id === element.movie_id });
-                  if (movies_id_find) {
+               {isReviews.length === 0 || !isUpdate ? <div class="loading-container">
+               <div class="box-loading"></div>
+               </div> : isReviews.map((element, index) => {
                      return(
                      <>
                      <div class="review" key={index}>
@@ -52,7 +55,6 @@ export default function MoviesIDSection() {
                      </div>
                      </>
                   )
-                  }
                })}
             </div>
          </div>

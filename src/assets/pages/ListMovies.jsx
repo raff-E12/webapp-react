@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Placeholder from "../../../public/imgs/img_placeholder.png"
 import Movies from "../../assets/api/Movies_list.json"
-import { Link, useNavigate } from 'react-router'
+import { Link, useNavigate, useSearchParams } from 'react-router'
 import { Export_Context } from '../api/ApiConnection'
 
 export default function ListMovies() {
