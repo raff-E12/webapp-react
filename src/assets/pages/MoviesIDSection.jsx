@@ -16,7 +16,9 @@ export default function MoviesIDSection() {
    <Header />
     <section class="book-detail">
         <div class="container">
-        {isMovies.map((element) =>{
+        {isMovies.length === 0 ? <div class="loading-container">
+          <div class="box-loading"></div>
+          </div> : isMovies.map((element) =>{
          if (element.title === name) {
              return(
             <>
@@ -36,24 +38,24 @@ export default function MoviesIDSection() {
         })}
         
         <div class="reviews">
-        <h2>Recensioni degli Utenti</h2>
-        <div class="reviews">
-         {Reviews.map((element, index) => {
-            const movies_id_find = Movies.find(movies => { return movies.id === element.movie_id });
-            if (movies_id_find) {
-               return(
-                <>
-                <div class="review" key={index}>
-                <h3>{element.name}</h3>
-                <p>{element.text}</p>
-                <p class="rating">⭐⭐⭐⭐⭐</p>
-                </div>
-                </>
-             )
-            }
-         })}
-        </div>
-        </div>
+            <h2>Recensioni degli Utenti</h2>
+            <div class="reviews">
+               {Reviews.map((element, index) => {
+                  const movies_id_find = Movies.find(movies => { return movies.id === element.movie_id });
+                  if (movies_id_find) {
+                     return(
+                     <>
+                     <div class="review" key={index}>
+                     <h3>{element.name}</h3>
+                     <p>{element.text}</p>
+                     <p class="rating">⭐⭐⭐⭐⭐</p>
+                     </div>
+                     </>
+                  )
+                  }
+               })}
+            </div>
+         </div>
         </div>
     </section>
    <Footer />

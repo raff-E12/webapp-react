@@ -13,7 +13,9 @@ export default function Products() {
     <div class="container">
       <h2>Film in Evidenza</h2>
       <div class="product-grid">
-        {isMovies.map((element, index) =>{
+        {isMovies.length === 0 ? <div class="loading-container">
+          <div class="box-loading"></div>
+          </div> : isMovies.map((element, index) =>{
          if (element.id > 2) {
             return(
             <>
