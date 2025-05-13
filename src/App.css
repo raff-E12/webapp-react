@@ -375,5 +375,23 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
+    .react-rater {
+    display: inline-block;
+    line-height: normal; }
+    .react-rater > * {
+      display: inline-block; }
+
+  .react-rater-star {
+    cursor: pointer;
+    color: #ccc;
+    position: relative; }
+    .react-rater-star.will-be-active {
+      color: #666; }
+    .react-rater-star.is-active {
+      color: #F2CB05; }
+    .react-rater-star.is-active-half:before {
+      color: #F2CB05;
+      content: '\2605';
+    }
 
 /***** End CSS Layout Page *****/

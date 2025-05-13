@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useParams } from 'react-router'
@@ -6,33 +6,33 @@ import Placeholder from "../../../public/imgs/img_placeholder.png"
 import Movies from "../../assets/api/Movies_list.json"
 import Reviews from "../../assets/api/Reviews_list.json"
 import { Export_Context } from '../api/ApiConnection'
+import Rater from 'react-rater'
+
 
 export default function MoviesIDSection() {
   const { name } = useParams(); 
   const { isMovies, setMovies, SetID, isID, isReviews, isUpdate } = Export_Context();
 
-  console.log(isID);
-
   return (
    <>
    <Header />
-    <section class="book-detail">
-        <div class="container">
-        {isMovies.length === 0 ? <div class="loading-container">
-          <div class="box-loading"></div>
+    <section className="book-detail">
+        <div className="container">
+        {isMovies.length === 0 ? <div className="loading-container">
+          <div className="box-loading"></div>
           </div> : isMovies.map((element) =>{
          if (element.title === name) {
              SetID(Number(element.id));
              return(
             <>
-            <div class="book-header">
+            <div className="book-header">
                 <h1>{element.title}</h1>
                 <p>{element.director}</p>
              </div>
-            <div class="book-image">
+            <div className="book-image">
             <img src={element.image} alt="Il Nome della Rosa" />
             </div>
-            <div class="book-description">
+            <div className="book-description">
             <p>{element.abstract}</p>
             </div>
             </>
@@ -40,18 +40,20 @@ export default function MoviesIDSection() {
          }
         })}
         
-        <div class="reviews">
+        <div className="reviews">
             <h2>Recensioni degli Utenti</h2>
-            <div class="reviews">
+            <div className="reviews">
                {isReviews.length === 0 || !isUpdate ? <div class="loading-container">
-               <div class="box-loading"></div>
+               <div className="box-loading"></div>
                </div> : isReviews.map((element, index) => {
                      return(
                      <>
-                     <div class="review" key={index}>
+                     <div className="review" key={index}>
                      <h3>{element.name}</h3>
                      <p>{element.text}</p>
-                     <p class="rating">⭐⭐⭐⭐⭐</p>
+                     <p className="rating">
+                       <Rater total={5} rating={Number(element.vote)}/>
+                     </p>
                      </div>
                      </>
                   )

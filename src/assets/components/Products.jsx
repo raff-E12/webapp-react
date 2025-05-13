@@ -9,21 +9,21 @@ export default function Products() {
   const { isMovies, setMovies, SetID, isID } = Export_Context();
 
   return (
-  <section class="products" id="prodotti">
-    <div class="container">
+  <section className="products" id="prodotti">
+    <div className="container">
       <h2>Film in Evidenza</h2>
-      <div class="product-grid">
-        {isMovies.length === 0 ? <div class="loading-container">
-          <div class="box-loading"></div>
+      <div className="product-grid">
+        {isMovies.length === 0 ? <div className="loading-container">
+          <div className="box-loading"></div>
           </div> : isMovies.map((element, index) =>{
          if (element.id > 2) {
             return(
             <>
-            <div class="product" key={index}>
+            <div className="product" key={index}>
               <img src={element.image} alt="movies-icons" />
               <h3>{element.title}</h3>
               <p>Regista: {element.director}</p>
-              <button class="btn" onClick={() => navigate_link(`/movies/${element.title}`)}>Leggi Ora</button>
+              <button className="btn" onClick={() => navigate_link(`/movies/${element.title}`)}>Leggi Ora</button>
            </div>
             </>
           )

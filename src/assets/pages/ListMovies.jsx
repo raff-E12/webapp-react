@@ -13,20 +13,20 @@ export default function ListMovies() {
   return (
     <>
     <Header />
-    <section class="catalog" id="catalogo">
-    <div class="container">
+    <section className="catalog" id="catalogo">
+    <div className="container">
       <h2>Catalogo Completo</h2>
-      <div class="catalog-grid">
-      {isMovies.length === 0 ? <div class="loading-container">
-          <div class="box-loading"></div>
+      <div className="catalog-grid">
+      {isMovies.length === 0 ? <div className="loading-container">
+          <div className="box-loading"></div>
           </div> : isMovies.map((element, index) =>{
             return(
             <>
-            <div class="product" key={index}>
+            <div className="product" key={index}>
               <img src={element.image} alt="movies-icons" />
               <h3>{element.title}</h3>
               <p>Regista: {element.director}</p>
-              <button class="btn" onClick={() => navigate_link(`/movies/${element.title}`)}>Leggi Ora</button>
+              <button className="btn" onClick={() => navigate_link(`/movies/${element.title}`)}>Leggi Ora</button>
            </div>
             </>
           )

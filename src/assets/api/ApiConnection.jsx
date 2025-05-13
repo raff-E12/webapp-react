@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { createContext, use, useContext, useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router';
 
 const ApiContext = createContext();
 
@@ -16,7 +15,7 @@ function ApiConnection({children}) {
       const fetch_api = await axios.get(api_link);
       const data = await fetch_api.data;
       setMovies(data.result);
-      console.log(isMovies);
+      // console.log(isMovies);
     } catch (error) {
       throw new Error(error);
     }
@@ -29,7 +28,7 @@ function ApiConnection({children}) {
       const fetch_api = await axios.get(api_link);
       const data = await fetch_api.data;
       setReviews(data.result);
-      console.log(isReviews);
+      // console.log(isReviews);
     } catch (error) {
       throw new Error(error);
     }

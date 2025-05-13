@@ -6,10 +6,10 @@ export default function Contactpage() {
   return (
     <>
     <Header/>
-  <section class="contacts" id="contatti">
-    <div class="container">
+  <section className="contacts" id="contatti">
+    <div className="container">
       <h2>Contattaci</h2>
-      <div class="contact-form">
+      <div className="contact-form">
         <form action="#" method="POST">
           <label for="name">Nome</label>
           <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required />
