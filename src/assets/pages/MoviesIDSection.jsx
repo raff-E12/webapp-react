@@ -7,6 +7,7 @@ import Movies from "../../assets/api/Movies_list.json"
 import Reviews from "../../assets/api/Reviews_list.json"
 import { Export_Context } from '../api/ApiConnection'
 import Rater from 'react-rater'
+import ReviewsForm from '../components/ReviewsForm'
 
 
 export default function MoviesIDSection() {
@@ -61,6 +62,7 @@ export default function MoviesIDSection() {
             </div>
          </div>
         </div>
+        <ReviewsForm />
     </section>
    <Footer />
    </>

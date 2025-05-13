@@ -8,6 +8,9 @@ function ApiConnection({children}) {
   const [isReviews, setReviews] = useState([]);
   const [isUpdate, setUpdate] = useState(null);
   const [isID, SetID] = useState(0);
+  const [isUser, SetUser] = useState("");
+  const [isVote, SetVote] = useState(0);
+  const [isText, SetText] = useState("");
   
   async function Movies_List() {
     try {
@@ -37,6 +40,24 @@ function ApiConnection({children}) {
     }, 1000)
   }
 
+  async function Add_Reviews(){
+    try {
+    const object_composition = {
+      movie_id: isID,
+      name: isUser,
+      vote: isVote,
+      text: isText
+    }
+    const url_api = "http://localhost:4000/api/reviews/add";
+    const fetch_api = await axios.post(url_api, object_composition);
+    // console.log(fetch_api.data);
+    Reviews_list();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
+  useEffect(() =>{ Add_Reviews() },[]);
   useEffect(() =>{ Reviews_list() },[isID]);
   useEffect(() =>{ Movies_List() },[]);
 
@@ -46,7 +67,14 @@ function ApiConnection({children}) {
     SetID,
     isID,
     isReviews,
-    isUpdate
+    isUpdate,
+    isUser,
+    isVote,
+    isText,
+    SetUser,
+    SetVote,
+    SetText,
+    Add_Reviews
   }
 
   return (
