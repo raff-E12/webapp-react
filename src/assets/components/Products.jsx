@@ -2,16 +2,18 @@ import React from 'react'
 import placeholder from "../../../public/imgs/img_placeholder.png"
 import Movies from "../../assets/api/Movies_list.json"
 import { useNavigate } from 'react-router'
+import { Export_Context } from '../api/ApiConnection';
 
 export default function Products() {
   const navigate_link = useNavigate();
+  const { isMovies, setMovies } = Export_Context();
 
   return (
   <section class="products" id="prodotti">
     <div class="container">
       <h2>Film in Evidenza</h2>
       <div class="product-grid">
-        {Movies.map((element, index) =>{
+        {isMovies.map((element, index) =>{
          if (element.id > 2) {
             return(
             <>

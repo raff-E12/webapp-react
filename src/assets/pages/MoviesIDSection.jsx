@@ -5,17 +5,18 @@ import { useParams } from 'react-router'
 import Placeholder from "../../../public/imgs/img_placeholder.png"
 import Movies from "../../assets/api/Movies_list.json"
 import Reviews from "../../assets/api/Reviews_list.json"
+import { Export_Context } from '../api/ApiConnection'
 
 export default function MoviesIDSection() {
   const { name } = useParams(); 
-  console.log(name);
+  const { isMovies, setMovies } = Export_Context();
 
   return (
    <>
    <Header />
     <section class="book-detail">
         <div class="container">
-        {Movies.map((element, index) =>{
+        {isMovies.map((element) =>{
          if (element.title === name) {
              return(
             <>
