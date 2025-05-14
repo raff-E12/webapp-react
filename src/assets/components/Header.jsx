@@ -10,7 +10,7 @@ export default function Header() {
         <ul className="nav-links">
           <li><Link to={"/"}>Home</Link></li>
           <li><Link to={"/movies"}>Catologo</Link></li>
-          <li><Link to={"/contact"}>Contatti</Link></li>
+          <li><Link to={"/add-movies"}>Aggiungi</Link></li>
         </ul>
       </nav>
     </div>

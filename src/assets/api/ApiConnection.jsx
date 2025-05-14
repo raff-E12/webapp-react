@@ -11,6 +11,7 @@ function ApiConnection({children}) {
   const [isUser, SetUser] = useState("");
   const [isVote, SetVote] = useState(0);
   const [isText, SetText] = useState("");
+  const [isAVG, setAVG] = useState(0);
   
   async function Movies_List() {
     try {
@@ -74,7 +75,9 @@ function ApiConnection({children}) {
     SetUser,
     SetVote,
     SetText,
-    Add_Reviews
+    Add_Reviews,
+    isAVG,
+    setAVG
   }
 
   return (

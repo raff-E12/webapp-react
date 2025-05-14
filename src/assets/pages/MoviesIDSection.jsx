@@ -12,7 +12,7 @@ import ReviewsForm from '../components/ReviewsForm'
 
 export default function MoviesIDSection() {
   const { name } = useParams(); 
-  const { isMovies, setMovies, SetID, isID, isReviews, isUpdate } = Export_Context();
+  const { isMovies, setMovies, SetID, isID, isReviews, isUpdate, setAVG, isAVG } = Export_Context();
 
   return (
    <>
@@ -43,10 +43,15 @@ export default function MoviesIDSection() {
         
         <div className="reviews">
             <h2>Recensioni degli Utenti</h2>
+           <section class="container average-rating">
+              <h3>Media delle Recensioni</h3>
+              <p><Rater total={5} rating={Number(isAVG)}/> {`${isAVG}/5`}</p>
+            </section>
             <div className="reviews">
                {isReviews.length === 0 || !isUpdate ? <div class="loading-container">
                <div className="box-loading"></div>
                </div> : isReviews.map((element, index) => {
+                     setAVG(Number(element.average_rating));
                      return(
                      <>
                      <div className="review" key={index}>
