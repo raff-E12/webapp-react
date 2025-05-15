@@ -16,7 +16,7 @@ export default function Products() {
         {isMovies.length === 0 ? <div className="loading-container">
           <div className="box-loading"></div>
           </div> : isMovies.map((element, index) =>{
-         if (element.id > 2) {
+         if (element.id < 4) {
             return(
             <>
             <div className="product" key={index}>

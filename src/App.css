@@ -552,4 +552,8 @@
       overflow: hidden;
     }
 
+    .logo-icon img{
+      transform: scale(2.6, 2.6) translate(-1px, 1px);
+    }
+
 /***** End CSS Layout Page *****/
