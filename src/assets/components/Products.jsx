@@ -1,10 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import placeholder from "../../../public/imgs/img_placeholder.png"
 import Movies from "../../assets/api/Movies_list.json"
 import { useNavigate } from 'react-router'
 import { Export_Context } from '../api/ApiConnection';
 
 export default function Products() {
+  const [isCount, setCount] = useState(0);
   const navigate_link = useNavigate();
   const { isMovies, setMovies, SetID, isID } = Export_Context();
 
@@ -16,7 +17,8 @@ export default function Products() {
         {isMovies.length === 0 ? <div className="loading-container">
           <div className="box-loading"></div>
           </div> : isMovies.map((element, index) =>{
-         if (element.id < 4) {
+            const random_id = isMovies[Math.floor(Math.random() * isMovies.length)].id;
+         if (random_id < index) {
             return(
             <>
             <div className="product" key={index}>

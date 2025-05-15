@@ -545,15 +545,36 @@
       height: 60px;
       position: absolute;
       left: -10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       top: -10px;
       transform: rotate(-30deg);
       border: 5px solid white;
       border-radius: 100px;
+      background-color: white;
       overflow: hidden;
     }
 
-    .logo-icon img{
-      transform: scale(2.6, 2.6) translate(-1px, 1px);
+    .logo-icon i{
+      transform: scale(1.9, 1.9);
+      color: #F2CB05;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-container i{
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: #F2CB05;
     }
 
 /***** End CSS Layout Page *****/

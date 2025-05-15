@@ -1,11 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router'
+import Logo from "../../../public/imgs/logo.png"
 
 export default function Header() {
   return (
   <header>
     <div className="container header-top">
-      <div className="logo">E-Movies</div>
+      <div class="logo-container">
+        <i class="fa-solid fa-play"></i>
+        <div className="logo-text">E-Movies</div>
+      </div>
       <nav>
         <ul className="nav-links">
           <li><Link to={"/"}>Home</Link></li>

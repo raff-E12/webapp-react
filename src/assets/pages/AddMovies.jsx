@@ -25,7 +25,7 @@ export default function AddMovies() {
     <Header />
     <div className="container-form">
      <div className='logo-icon'>
-        <img src={Logo} alt="logo-sc" draggable="false" />
+        <i class="fa-solid fa-clapperboard"></i>
      </div>
       <h1 className="form-title">Aggiungi Nuovo Film</h1>
     <form action="#" method="POST" className="form" onSubmit={e => Form_sending(e.preventDefault())}>
