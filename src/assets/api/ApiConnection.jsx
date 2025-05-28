@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { createContext, use, useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 
 const ApiContext = createContext();
@@ -19,7 +20,10 @@ function ApiConnection({children}) {
   const [isDate, SetDate] = useState("");
   const [isDescription, SetDescription] = useState("");
   const [isImg, setImg] = useState("");
+  const navigate_link = useNavigate();
   
+
+  // Gestione della lista di Film
   async function Movies_List() {
     try {
       const api_link = "http://localhost:4000/api/movies/all";
@@ -28,12 +32,14 @@ function ApiConnection({children}) {
       setMovies(data.result);
       // console.log(isMovies);
     } catch (error) {
+      navigate_link("/404-list");
       throw new Error(error);
     }
   }
 
+// Gestione della lista di recensioni
  async function Reviews_list() {
-    setUpdate(true);
+    setUpdate(true); // Gestione di Caricamento.
     // console.log(isUpdate);
     try {
       const api_link = `http://localhost:4000/api/reviews/${isID}`;
@@ -57,6 +63,7 @@ function ApiConnection({children}) {
     }, 1000);
   }
 
+  // Gestione di aggiunta delle recensioni
   async function Add_Reviews(){
     try {
     const object_composition = {
@@ -89,6 +96,7 @@ function ApiConnection({children}) {
     image: "../../../public/imgs/" + isImg.split("\\").pop()
   };
   
+  // Gestione aggiunta dei Film
   async function Form_sending() {
   if (object_movies.title !== 0 && object_movies.director !== 0 && object_movies.genre !== 0 &&
   object_movies.release_year !== 0 && object_movies.abstract !== 0 && object_movies.image !== 0) {

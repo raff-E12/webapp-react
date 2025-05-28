@@ -577,4 +577,15 @@
       background-color: #F2CB05;
     }
 
+    .container-page{
+      height: 100vh;
+    }
+
+    .btn-groups{
+      gap: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
 /***** End CSS Layout Page *****/
