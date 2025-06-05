@@ -17,8 +17,10 @@ export default function Products() {
         {isMovies.length === 0 ? <div className="loading-container">
           <div className="box-loading"></div>
           </div> : isMovies.map((element, index) =>{
+            
+            // Sorteggio casuale in base un limite casuale.
             const random_id = isMovies[Math.floor(Math.random() * isMovies.length)].id;
-         if (random_id < index) {
+         if (index < random_id) {
             return(
             <>
             <div className="product" key={index}>
@@ -29,6 +31,7 @@ export default function Products() {
            </div>
             </>
           )
+
          }
         })}
       </div>
